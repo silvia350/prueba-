@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OPULENCE — Joyería Maximalista</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: #11100f;
+            color: #f5eee3;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(17, 16, 15, 0.92);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(214, 166, 74, 0.25);
+        }
+
+        .navbar {
+            max-width: 1400px;
+            margin: auto;
+            height: 80px;
+            padding: 0 40px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: #d6a64a;
+        }
+
+        nav {
+            display: flex;
+            gap: 35px;
+        }
+
+        nav a {
+            color: #f5eee3;
+            text-decoration: none;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: color .3s;
+        }
+
+        nav a:hover {
+            color: #d6a64a;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 18px;
+            align-items: center;
+        }
+
+        .header-actions button {
+            background: none;
+            border: none;
+            color: #f5eee3;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .cart {
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -9px;
+            right: -10px;
+            background: #d6a64a;
+            color: #11100f;
+            width: 17px;
+            height: 17px;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 100vh;
+            padding: 120px 7% 70px;
+
+            display: flex;
+            align-items: center;
+
+            background:
+                radial-gradient(circle at 80% 40%, rgba(214,166,74,.18), transparent 35%),
+                radial-gradient(circle at 20% 70%, rgba(105,35,48,.3), transparent 30%),
+                #11100f;
+        }
+
+        .hero-content {
+            max-width: 620px;
+        }
+
+        .eyebrow {
+            color: #d6a64a;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-size: 12px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(70px, 9vw, 145px);
+            line-height: .8;
+            font-weight: 500;
+            margin-bottom: 35px;
+        }
+
+        .hero h1 span {
+            color: #d6a64a;
+            font-style: italic;
+        }
+
+        .hero p {
+            max-width: 480px;
+            color: #c7beb1;
+            line-height: 1.8;
+            font-size: 15px;
+            margin-bottom: 35px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 17px 32px;
+            background: #d6a64a;
+            color: #11100f;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 11px;
+            font-weight: 700;
+            transition: .3s;
+            border: 1px solid #d6a64a;
+        }
+
+        .btn:hover {
+            background: transparent;
+            color: #d6a64a;
+        }
+
+        .hero-decoration {
+            position: absolute;
+            right: 8%;
+            width: 370px;
+            height: 370px;
+            border: 1px solid rgba(214,166,74,.45);
+            border-radius: 50%;
+        }
+
+        .hero-decoration::before,
+        .hero-decoration::after {
+            content: "";
+            position: absolute;
+            inset: 35px;
+            border: 1px solid rgba(214,166,74,.3);
+            border-radius: 50%;
+        }
+
+        .hero-decoration::after {
+            inset: 75px;
+        }
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            padding: 90px 7%;
+            background: #f1e8da;
+            color: #171514;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title small {
+            color: #a77a27;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 11px;
+        }
+
+        .section-title h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        .category-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .category {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            padding: 30px;
+            background: #251f1d;
+        }
+
+        .category:nth-child(2) {
+            background: #4d2730;
+        }
+
+        .category:nth-child(3) {
+            background: #3d382e;
+        }
+
+        .category::before {
+            content: "✦";
+            position: absolute;
+            font-size: 180px;
+            color: rgba(214,166,74,.2);
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .category h3 {
+            position: relative;
+            z-index: 2;
+            color: white;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 38px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products {
+            padding: 110px 7%;
+            background: #11100f;
+        }
+
+        .products .section-title {
+            color: #f5eee3;
+        }
+
+        .product-grid {
+            max-width: 1250px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .product-card {
+            cursor: pointer;
+        }
+
+        .product-image {
+            height: 330px;
+            background: linear-gradient(145deg, #302a25, #171514);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 18px;
+        }
+
+        .product-image::before {
+            content: "✦";
+            font-size: 130px;
+            color: #d6a64a;
+            opacity: .75;
+            transition: transform .5s;
+        }
+
+        .product-card:hover .product-image::before {
+            transform: scale(1.2) rotate(15deg);
+        }
+
+        .product-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .product-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .product-info p {
+            color: #d6a64a;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        .add-cart {
+            background: none;
+            border: 1px solid #514b43;
+            color: #f5eee3;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .add-cart:hover {
+            border-color: #d6a64a;
+            color: #d6a64a;
+        }
+
+        /* =========================
+           BRAND STATEMENT
+        ========================= */
+
+        .statement {
+            padding: 120px 10%;
+            text-align: center;
+            background: #d6a64a;
+            color: #171514;
+        }
+
+        .statement p {
+            max-width: 1000px;
+            margin: auto;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 5vw, 75px);
+            line-height: 1;
+        }
+
+        .statement span {
+            font-style: italic;
+        }
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        .newsletter {
+            padding: 100px 20px;
+            text-align: center;
+            background: #211d1a;
+        }
+
+        .newsletter h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 55px;
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .newsletter p {
+            color: #b9b0a4;
+            margin-bottom: 30px;
+        }
+
+        .newsletter-form {
+            max-width: 500px;
+            margin: auto;
+            display: flex;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 17px;
+            background: transparent;
+            border: 1px solid #625a50;
+            color: white;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 17px 25px;
+            background: #d6a64a;
+            border: 1px solid #d6a64a;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            padding: 50px 7%;
+            background: #0b0a09;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        footer .logo {
+            font-size: 25px;
+        }
+
+        footer p {
+            color: #777168;
+            font-size: 12px;
+        }
+
+        .socials {
+            display: flex;
+            gap: 20px;
+        }
+
+        .socials a {
+            color: #d6a64a;
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================
+           CART PANEL
+        ========================= */
+
+        .cart-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 380px;
+            max-width: 90%;
+            height: 100vh;
+            background: #f1e8da;
+            color: #171514;
+            z-index: 2000;
+            padding: 30px;
+            transition: right .4s;
+            box-shadow: -10px 0 40px rgba(0,0,0,.4);
+        }
+
+        .cart-panel.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #c8bca9;
+        }
+
+        .cart-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 35px;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 25px;
+            cursor: pointer;
+        }
+
+        #cart-items {
+            padding: 25px 0;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #d3c7b7;
+        }
+
+        .cart-total {
+            margin-top: 30px;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero-decoration {
+                opacity: .25;
+                right: -100px;
+            }
+
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .product-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            footer {
+                flex-direction: column;
+                gap: 25px;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 550px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .hero {
+                padding-left: 25px;
+                padding-right: 25px;
+            }
+
+            .hero h1 {
+                font-size: 75px;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+        <div class="navbar">
+
+            <div class="logo">OPULENCE</div>
+
+            <nav>
+                <a href="#inicio">Inicio</a>
+                <a href="#coleccion">Colección</a>
+                <a href="#destacados">Destacados</a>
+                <a href="#contacto">Contacto</a>
+            </nav>
+
+            <div class="header-actions">
+                <button aria-label="Buscar">⌕</button>
+
+                <button class="cart" onclick="toggleCart()" aria-label="Carrito">
+                    ♡
+                    <span class="cart-count" id="cart-count">0</span>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section class="hero" id="inicio">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    Joyería contemporánea
+                </div>
+
+                <h1>
+                    More is<br>
+                    <span>more.</span>
+                </h1>
+
+                <p>
+                    Piezas extraordinarias para quienes no creen en el
+                    menos es más. Diseños maximalistas, formas atrevidas
+                    y detalles creados para llamar la atención.
+                </p>
+
+                <a href="#destacados" class="btn">
+                    Descubrir colección
+                </a>
+
+            </div>
+
+            <div class="hero-decoration"></div>
+
+        </section>
+
+
+        <!-- CATEGORÍAS -->
+
+        <section class="categories" id="coleccion">
+
+            <div class="section-title">
+                <small>Explora</small>
+                <h2>La colección</h2>
+            </div>
+
+            <div class="category-grid">
+
+                <div class="category">
+                    <h3>Anillos</h3>
+                </div>
+
+                <div class="category">
+                    <h3>Pendientes</h3>
+                </div>
+
+                <div class="category">
+                    <h3>Collares</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PRODUCTOS -->
+
+        <section class="products" id="destacados">
+
+            <div class="section-title">
+                <small>Selección especial</small>
+                <h2>Favoritos</h2>
+            </div>
+
+            <div class="product-grid">
+
+                <article class="product-card">
+
+                    <div class="product-image"></div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Solar Ring</h3>
+                            <p>89 €</p>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Solar Ring', 89)">
+                            +
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image"></div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Divine Earrings</h3>
+                            <p>120 €</p>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Divine Earrings', 120)">
+                            +
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image"></div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Venus Chain</h3>
+                            <p>145 €</p>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Venus Chain', 145)">
+                            +
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <article class="product-card">
+
+                    <div class="product-image"></div>
+
+                    <div class="product-info">
+
+                        <div>
+                            <h3>Icon Bracelet</h3>
+                            <p>99 €</p>
+                        </div>
+
+                        <button
+                            class="add-cart"
+                            onclick="addToCart('Icon Bracelet', 99)">
+                            +
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </section>
+
+
+        <!-- STATEMENT -->
+
+        <section class="statement">
+
+            <p>
+                “Your jewellery doesn't have to
+                <span>blend in.</span> Neither do you.”
+            </p>
+
+        </section>
+
+
+        <!-- NEWSLETTER -->
+
+        <section class="newsletter" id="contacto">
+
+            <h2>Join the club.</h2>
+
+            <p>
+                Nuevas colecciones, piezas exclusivas y mucho brillo.
+            </p>
+
+            <form class="newsletter-form" onsubmit="subscribe(event)">
+
+                <input
+                    type="email"
+                    placeholder="Tu email"
+                    required
+                >
+
+                <button type="submit">
+                    Suscribirme
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="logo">
+            OPULENCE
+        </div>
+
+        <p>
+            © 2026 OPULENCE. Todos los derechos reservados.
+        </p>
+
+        <div class="socials">
+            <a href="#">Instagram</a>
+            <a href="#">TikTok</a>
+        </div>
+
+    </footer>
+
+
+    <!-- CARRITO -->
+
+    <aside class="cart-panel" id="cart-panel">
+
+        <div class="cart-header">
+
+            <h2>Tu carrito</h2>
+
+            <button
+                class="close-cart"
+                onclick="toggleCart()">
+                ×
+            </button>
+
+        </div>
+
+        <div id="cart-items">
+            <p>Tu carrito está vacío.</p>
+        </div>
+
+        <div class="cart-total">
+
+            <span>Total</span>
+
+            <span id="cart-total">
+                0 €
+            </span>
+
+        </div>
+
+    </aside>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script>
+
+        let cart = [];
+        let total = 0;
+
+
+        // Abrir/cerrar carrito
+
+        function toggleCart() {
+
+            const panel = document.getElementById("cart-panel");
+
+            panel.classList.toggle("active");
+
+        }
+
+
+        // Añadir producto
+
+        function addToCart(name, price) {
+
+            cart.push({
+                name: name,
+                price: price
+            });
+
+            total += price;
+
+            updateCart();
+
+            document
+                .getElementById("cart-panel")
+                .classList.add("active");
+
+        }
+
+
+        // Actualizar carrito
+
+        function updateCart() {
+
+            const cartItems =
+                document.getElementById("cart-items");
+
+            const cartCount =
+                document.getElementById("cart-count");
+
+            const cartTotal =
+                document.getElementById("cart-total");
+
+
+            cartCount.textContent = cart.length;
+
+            cartTotal.textContent =
+                total.toFixed(2) + " €";
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML =
+                    "<p>Tu carrito está vacío.</p>";
+
+                return;
+
+            }
+
+
+            cartItems.innerHTML = cart
+                .map((item, index) => `
+
+                    <div class="cart-item">
+
+                        <span>
+                            ${item.name}
+                        </span>
+
+                        <strong>
+                            ${item.price} €
+                        </strong>
+
+                    </div>
+
+                `)
+                .join("");
+
+        }
+
+
+        // Newsletter
+
+        function subscribe(event) {
+
+            event.preventDefault();
+
+            const email =
+                event.target.querySelector("input").value;
+
+            alert(
+                "¡Gracias! " +
+                email +
+                " ha sido añadido a nuestra lista."
+            );
+
+            event.target.reset();
+
+        }
+
+    </script>
+
+</body>
+</html>
